@@ -25,7 +25,8 @@ body {
 #counterApp {
     width: 500px;
     height: 300px;
-    background-color: #252525;
+    background-color: #202020;
+    /* background-color: #1f1f29; */
     border-radius: 24px;
     display: flex;
     flex-direction: column;
@@ -36,4 +37,16 @@ body {
 
 #buttons button {
     padding: 0.8rem 1.5rem;
+}
+#reset {
+    border: none;
+    background-color: hsl(56, 100%, 75%);
+}
+#increment {
+    border: none;
+    background-color: hsl(106, 100%, 75%);
+}
+#decrement {
+    border: none;
+    background-color: hsl(6, 100%, 75%);
 }

@@ -11,6 +11,7 @@ let addonColorValue = 56;
 let countOfRestart = 0;
 let countOfMin = 0;
 let countOfMax = 0;
+let newValue = value;
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -32,11 +33,23 @@ function feedback(value) {
             easterEgg.innerHTML = "ㅤ"; 
         }, 3000);
     }
-    else if (countOfRestart >= 5 && (countOfMin >= 2 && countOfMax >= 2)) {
+    else if (countOfRestart >= 3 && (countOfMin >= 1 && countOfMax >= 1)) {
         easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?"
     }
-    else if (countOfRestart > 0) {
-        easterEgg.innerHTML = "ㅤ";
+    else if (value === 100) {
+        easterEgg.innerHTML = `AHAHAHAHAH! <br> Did you think you can always press me? <br> NOOOOO`
+    }
+    else if (value === -100) {
+        easterEgg.innerHTML = "You are so negative"
+    }
+    else if (countOfRestart === 1 && value === 0) {
+        easterEgg.innerHTML = "Just give up!";
+    }
+    else if (countOfRestart === 2 && value === 0) {
+        easterEgg.innerHTML = "You cannot win me";
+    }
+    else if (countOfRestart > 2 && value === 0) {
+        easterEgg.innerHTML = "I will destroy you!"
     }
 }
 

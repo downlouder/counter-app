@@ -33,8 +33,14 @@ function feedback(value) {
             easterEgg.innerHTML = "ㅤ"; 
         }, 3000);
     }
-    else if (countOfRestart >= 3 && (countOfMin >= 1 && countOfMax >= 1)) {
+    else if (countOfRestart >= 4 && (countOfMin >= 2 && countOfMax >= 2)) {
         easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?"
+    }
+    else if (value === 100 && countOfMax > 0) {
+        easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press restart button)"
+    }
+    else if (value === 0 && countOfMax > 1) {
+        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman"
     }
     else if (value === 100) {
         easterEgg.innerHTML = `AHAHAHAHAH! <br> Did you think you can always press me? <br> NOOOOO`

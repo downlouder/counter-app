@@ -26,6 +26,10 @@ function settingsBtn(value) {
     }
 }
 
+function setMinMaxCount() {
+
+}
+
 function feedback(value) {
     if (value === 0 && countOfRestart === 0) {
         easterEgg.innerHTML = "Hi! I'm a counter app"; 
@@ -89,8 +93,13 @@ function app() {
         feedback(value);
     });
     reset.addEventListener('click', () => {
-        if (value === 100 || value === -100) {
+        if (value === 100) {
             countOfRestart++;
+            countOfMax++;
+        }
+        else if (value === -100) {
+            countOfRestart++;
+            countOfMin++
         }
         value = 0
         if (value === 0) {

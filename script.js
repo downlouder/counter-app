@@ -82,14 +82,17 @@ function feedback(value) {
     else if (value === 0 && countOfMax === 2) {
         easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
     }
-    else if (countOfRestart > 4 && value === 0) {
+    else if (countOfRestart >= 4 && value === 0) {
         easterEgg.innerHTML = "I will destroy you!";
     }
-    else if (countOfRestart > 3 && value === 0) {
+    else if (countOfRestart >= 3 && value === 0) {
         easterEgg.innerHTML = "You cannot win me";
     }
-    else if (countOfRestart > 1 && value === 0) {   
+    else if (countOfRestart >= 1 && value === 0) {   
         easterEgg.innerHTML = "Just give up!";
+    }
+    else {
+        easterEgg.innerHTML = "ㅤ"
     }
 }
 

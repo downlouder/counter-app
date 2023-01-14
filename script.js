@@ -12,6 +12,7 @@ let countOfRestart = 0;
 let countOfMin = 0;
 let countOfMax = 0;
 let newValue = value;
+let isCompleted = false;
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -32,7 +33,15 @@ function setMinMaxCount() {
 
 function feedback(value) {
     //General
-    if (value === 0 && countOfRestart === 0) {
+    if (isCompleted) {
+        if (value === 0) {
+            setTimeout(() => {
+                easterEgg.innerHTML = "This game is completed, now I have to leave you";
+            }, 7000);
+        }
+        easterEgg.innerHTML = "ㅤ"
+    }
+    else if (value === 0 && countOfRestart === 0) {
         easterEgg.innerHTML = "Hi! I'm a counter app"; 
         setTimeout(() => {
             easterEgg.innerHTML = "ㅤ"; 
@@ -76,11 +85,21 @@ function feedback(value) {
         easterEgg.innerHTML = "You are so negative";
     }
     //Second Round
+    else if (countOfRestart === 1 && value === 0) {   
+        easterEgg.innerHTML = "Just give up!";
+    }
     else if (value === 100 && countOfMax === 1) {
         easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press reset button)";
     }
+    else if (value === -100 && countOfMin === 1) {
+        easterEgg.innerHTML = "I know how I can make you more positive";
+    }
+    //Third Round
     else if (value === 0 && countOfMax === 2) {
         easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
+    }
+    else if (value === 0 && countOfMin === 2) {
+        easterEgg.innerHTML = "Now you can only increase";
     }
     else if (countOfRestart >= 4 && value === 0) {
         easterEgg.innerHTML = "I will destroy you!";
@@ -88,11 +107,8 @@ function feedback(value) {
     else if (countOfRestart >= 3 && value === 0) {
         easterEgg.innerHTML = "You cannot win me";
     }
-    else if (countOfRestart >= 1 && value === 0) {   
-        easterEgg.innerHTML = "Just give up!";
-    }
-    else {
-        easterEgg.innerHTML = "ㅤ"
+    else if ((countOfMin === 0 && countOfMax === 0) && value === 0) {
+        easterEgg.innerHTML = "ㅤ";
     }
 }
 

@@ -48,6 +48,7 @@ function feedback(value) {
         }, 3000);
     }
     else if (countOfRestart >= 4 && (countOfMin >= 2 && countOfMax >= 2)) {
+        isCompleted = true;
         easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
     }
     //First Round
@@ -69,13 +70,13 @@ function feedback(value) {
     else if (value === -40 && countOfMin === 0) {
         easterEgg.innerHTML = "I don't like what you are doing now";
     }
-    else if ((value === 65 || value === -65) && countOfRestart === 0) {
+    else if ((value === 65 || value === -65) && (countOfMax === 0 || countOfMin === 0)) {
         easterEgg.innerHTML = "Why are you still pressing me?";
     }
-    else if ((value === 80 || value === -80) && countOfRestart === 0) {
+    else if ((value === 80 || value === -80) && (countOfMax === 0 || countOfMin === 0)) {
         easterEgg.innerHTML = "Dude common, just give up!";
     }
-    else if ((value === 90 || value === -90) && countOfRestart === 0) {
+    else if ((value === 90 || value === -90) && (countOfMax === 0 || countOfMin === 0)) {
         easterEgg.innerHTML = "Okay man, I got you)";
     }
     else if (value === 100 && countOfMax === 0) {
@@ -85,8 +86,26 @@ function feedback(value) {
         easterEgg.innerHTML = "You are so negative";
     }
     //Second Round
-    else if (countOfRestart === 1 && value === 0) {   
+    else if ((countOfMax === 1 || countOfMin === 1) && value === 0) {   
         easterEgg.innerHTML = "Just give up!";
+    }
+    else if ((countOfMax === 1 || countOfMin === 1) && (value === 25 || value === -25)) {
+        easterEgg.innerHTML = "Stop pressing me";
+    }
+    else if ((countOfMax === 1 || countOfMin === 1) && (value === 50 || value === -50)) {
+
+    }
+    else if ((countOfMax === 1 || countOfMin === 1) && (value === 65 || value === -65)) {
+
+    }
+    else if ((countOfMax === 1 || countOfMin === 1) && (value === 80 || value === -80)) {
+
+    }
+    else if (countOfMax === 1 && value === 90) {
+
+    }
+    else if (countOfMin === 1 && value === -90) {
+        easterEgg.innerHTML = "Try to be more positive";
     }
     else if (value === 100 && countOfMax === 1) {
         easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press reset button)";
@@ -107,8 +126,8 @@ function feedback(value) {
     else if (countOfRestart >= 3 && value === 0) {
         easterEgg.innerHTML = "You cannot win me";
     }
-    else if ((countOfMin === 0 && countOfMax === 0) && value === 0) {
-        easterEgg.innerHTML = "ㅤ";
+    else if (value === 0) {
+        easterEgg.innerHTML = "ㅤ"
     }
 }
 

@@ -28,10 +28,6 @@ function settingsBtn(value) {
     }
 }
 
-function setMinMaxCount() {
-
-}
-
 function feedback(value) {
     //General
     if (isCompleted) {
@@ -48,9 +44,60 @@ function feedback(value) {
             easterEgg.innerHTML = "ㅤ"; 
         }, 3000);
     }
-    else if (countOfRestart >= 4 && (countOfMin >= 2 && countOfMax >= 2)) {
-        isCompleted = true;
-        easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
+    //Last Round 
+    if ((countOfMax >= 2 && countOfMin >= 2) && countOfRestart >= 4) {
+        if (value === -20 || value === 20) {
+            easterEgg.innerHTML = "Stop dude, this game never is over";
+        }
+        else if (value === -40 || value === 40) {
+            easterEgg.innerHTML = "Why are you still playing in the game?";
+        }
+        else if (value === -60 || value === 60) {
+            easterEgg.innerHTML = "I think you should see a psychotherapist";
+        }
+        else if (value === -80 || value === 80) {
+            easterEgg.innerHTML = "Just close this game";
+        }
+        else if (value === -90 || value === 90) {
+            easterEgg.innerHTML = "You're not gonna make it.";
+        }
+        else if (value === -100 || value === 100) {
+            isCompleted = true;
+            easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
+        }
+    }
+    //Above code work correct
+
+    //Third Round
+    if (countOfMax === 2) {
+        if (value > 0) {
+            countOfIgn++;
+            reset.click();
+        }
+        else if (countOfIgn > 0) {
+            easterEgg.innerHTML = "No dude, you cannot increase";
+        }
+        else if (value === 0) {
+            easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
+        }
+        else if (value === - 5) {
+            easterEgg.innerHTML = "Obedient boy";
+        }
+        else if (value === -99) {
+            countOfIgn = 0;
+        }
+    }
+    if (countOfMin === 2) {
+        if (value < 0) {
+            countOfIgn++;
+            reset.click();
+        }
+        else if (countOfIgn > 0) {
+            easterEgg.innerHTML = "No dude, you cannot decrease";
+        }
+    }
+    else if (value === 0 && countOfMin === 2) {
+        easterEgg.innerHTML = "Now you can only increase";
     }
     //First Round
     else if (value === 20 && countOfMax === 0) {
@@ -86,33 +133,11 @@ function feedback(value) {
     else if (value === -100 && countOfMin === 0) {
         easterEgg.innerHTML = "You are so negative";
     }
-    //Third Round
-    if (countOfMax === 2) {
-        if (value > 0) {
-            countOfIgn++;
-            reset.click();
-        }
-        else if (countOfIgn > 0) {
-            easterEgg.innerHTML = "No dude, you cannot increase";
-        }
-        else if (value === 0) {
-            easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
-        }
-        else if (value === - 5) {
-            easterEgg.innerHTML = "Obedient boy";
-        }
-        else if (value === -99) {
-            countOfIgn = 0;
-        }
-    }
-    else if (value === 0 && countOfMin === 2) {
-        easterEgg.innerHTML = "Now you can only increase";
-    }
     //Second Round
     else if ((countOfMax === 1 || countOfMin === 1) && value === 0) {   
         easterEgg.innerHTML = "Just give up!";
     }
-    else if ((countOfMax === 1 || countOfMin === 1) && (value === 25 || value === -25)) {
+    else if ((countOfMax === 1 && countOfMin === 1) && (value === 25 || value === -25)) {
         easterEgg.innerHTML = "Stop pressing me";
     }
     else if ((countOfMax === 1 || countOfMin === 1) && (value === 50 || value === -50)) {

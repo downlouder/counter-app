@@ -13,6 +13,7 @@ let countOfMin = 0;
 let countOfMax = 0;
 let newValue = value;
 let isCompleted = false;
+let countOfIgn = 0;
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -85,6 +86,28 @@ function feedback(value) {
     else if (value === -100 && countOfMin === 0) {
         easterEgg.innerHTML = "You are so negative";
     }
+    //Third Round
+    if (countOfMax === 2) {
+        if (value > 0) {
+            countOfIgn++;
+            reset.click();
+        }
+        else if (countOfIgn > 0) {
+            easterEgg.innerHTML = "No dude, you cannot increase";
+        }
+        else if (value === 0) {
+            easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
+        }
+        else if (value === - 5) {
+            easterEgg.innerHTML = "Obedient boy";
+        }
+        else if (value === -99) {
+            countOfIgn = 0;
+        }
+    }
+    else if (value === 0 && countOfMin === 2) {
+        easterEgg.innerHTML = "Now you can only increase";
+    }
     //Second Round
     else if ((countOfMax === 1 || countOfMin === 1) && value === 0) {   
         easterEgg.innerHTML = "Just give up!";
@@ -112,13 +135,6 @@ function feedback(value) {
     }
     else if (value === -100 && countOfMin === 1) {
         easterEgg.innerHTML = "I know how I can make you more positive";
-    }
-    //Third Round
-    else if (value === 0 && countOfMax === 2) {
-        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
-    }
-    else if (value === 0 && countOfMin === 2) {
-        easterEgg.innerHTML = "Now you can only increase";
     }
     else if (countOfRestart >= 4 && value === 0) {
         easterEgg.innerHTML = "I will destroy you!";

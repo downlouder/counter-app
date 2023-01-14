@@ -31,6 +31,7 @@ function setMinMaxCount() {
 }
 
 function feedback(value) {
+    //General
     if (value === 0 && countOfRestart === 0) {
         easterEgg.innerHTML = "Hi! I'm a counter app"; 
         setTimeout(() => {
@@ -40,44 +41,55 @@ function feedback(value) {
     else if (countOfRestart >= 4 && (countOfMin >= 2 && countOfMax >= 2)) {
         easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
     }
-    else if (value >= 20) {
+    //First Round
+    else if (value === 20 && countOfMax === 0) {
         easterEgg.innerHTML = "Your day starts so nice, Am I right?";
     }
-    else if (value >= 30) {
+    else if (value === -20 && countOfMin === 0) {
+        easterEgg.innerHTML = "Why you are so unhappy?";
+    }
+    else if (value === 30 && countOfMax === 0) {
         easterEgg.innerHTML = "Can you don't press me anymore";
     }
-    else if (value >= 40) {
+    else if (value === -30 && countOfMin === 0) {
+        easterEgg.innerHTML = "Stop pressing me";
+    }
+    else if (value === 40 && countOfMax === 0) {
         easterEgg.innerHTML = "I feel beaten.";
     }
-    else if (value >= 65 || value <= -65) {
+    else if (value === -40 && countOfMin === 0) {
+        easterEgg.innerHTML = "I don't like what you are doing now";
+    }
+    else if ((value === 65 || value === -65) && countOfRestart === 0) {
         easterEgg.innerHTML = "Why are you still pressing me?";
     }
-    else if (value >= 80 || value <= -80) {
+    else if ((value === 80 || value === -80) && countOfRestart === 0) {
         easterEgg.innerHTML = "Dude common, just give up!";
     }
-    else if (value >= 90 || value <= -90) {
+    else if ((value === 90 || value === -90) && countOfRestart === 0) {
         easterEgg.innerHTML = "Okay man, I got you)";
     }
-    else if (value === 100 && countOfMax > 0) {
-        easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press restart button)";
-    }
-    else if (value === 0 && countOfMax > 1) {
-        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
-    }
-    else if (value === 100) {
+    else if (value === 100 && countOfMax === 0) {
         easterEgg.innerHTML = `AHAHAHAHAH! <br> Did you think you can always press me? <br> NOOOOO`;
     }
-    else if (value === -100) {
+    else if (value === -100 && countOfMin === 0) {
         easterEgg.innerHTML = "You are so negative";
     }
-    else if (countOfRestart === 1 && value === 0) {
-        easterEgg.innerHTML = "Just give up!";
+    //Second Round
+    else if (value === 100 && countOfMax === 1) {
+        easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press reset button)";
     }
-    else if (countOfRestart === 2 && value === 0) {
+    else if (value === 0 && countOfMax === 2) {
+        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
+    }
+    else if (countOfRestart > 4 && value === 0) {
+        easterEgg.innerHTML = "I will destroy you!";
+    }
+    else if (countOfRestart > 3 && value === 0) {
         easterEgg.innerHTML = "You cannot win me";
     }
-    else if (countOfRestart > 2 && value === 0) {
-        easterEgg.innerHTML = "I will destroy you!";
+    else if (countOfRestart > 1 && value === 0) {   
+        easterEgg.innerHTML = "Just give up!";
     }
 }
 

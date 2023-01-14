@@ -38,19 +38,37 @@ function feedback(value) {
         }, 3000);
     }
     else if (countOfRestart >= 4 && (countOfMin >= 2 && countOfMax >= 2)) {
-        easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?"
+        easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
+    }
+    else if (value >= 20) {
+        easterEgg.innerHTML = "Your day starts so nice, Am I right?";
+    }
+    else if (value >= 30) {
+        easterEgg.innerHTML = "Can you don't press me anymore";
+    }
+    else if (value >= 40) {
+        easterEgg.innerHTML = "I feel beaten.";
+    }
+    else if (value >= 65 || value <= -65) {
+        easterEgg.innerHTML = "Why are you still pressing me?";
+    }
+    else if (value >= 80 || value <= -80) {
+        easterEgg.innerHTML = "Dude common, just give up!";
+    }
+    else if (value >= 90 || value <= -90) {
+        easterEgg.innerHTML = "Okay man, I got you)";
     }
     else if (value === 100 && countOfMax > 0) {
-        easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press restart button)"
+        easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press restart button)";
     }
     else if (value === 0 && countOfMax > 1) {
-        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman"
+        easterEgg.innerHTML = "Good dog. <br> I think you will be good bondsman";
     }
     else if (value === 100) {
-        easterEgg.innerHTML = `AHAHAHAHAH! <br> Did you think you can always press me? <br> NOOOOO`
+        easterEgg.innerHTML = `AHAHAHAHAH! <br> Did you think you can always press me? <br> NOOOOO`;
     }
     else if (value === -100) {
-        easterEgg.innerHTML = "You are so negative"
+        easterEgg.innerHTML = "You are so negative";
     }
     else if (countOfRestart === 1 && value === 0) {
         easterEgg.innerHTML = "Just give up!";
@@ -59,7 +77,7 @@ function feedback(value) {
         easterEgg.innerHTML = "You cannot win me";
     }
     else if (countOfRestart > 2 && value === 0) {
-        easterEgg.innerHTML = "I will destroy you!"
+        easterEgg.innerHTML = "I will destroy you!";
     }
 }
 

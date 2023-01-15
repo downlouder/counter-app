@@ -15,13 +15,13 @@ let newValue = value;
 let isCompleted = false;
 let countOfIgn = 0;
 let clicks = 0;
+let isCoolDown = false;
 
 buttons.forEach((button) => {
     button.addEventListener('click', delay())
 })
 
 function delay() {
-  let isCoolDown = false;
   return function() {
     if (isCoolDown) return;
     isCoolDown = true;

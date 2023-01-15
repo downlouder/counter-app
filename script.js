@@ -14,6 +14,20 @@ let countOfMax = 0;
 let newValue = value;
 let isCompleted = false;
 let countOfIgn = 0;
+let clicks = 0;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', delay())
+})
+
+function delay() {
+  let isCoolDown = false;
+  return function() {
+    if (isCoolDown) return;
+    isCoolDown = true;
+    setTimeout(() => isCoolDown = false, 100);
+  };
+} 
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -46,7 +60,10 @@ function feedback(value) {
     }
     //Last Round 
     if ((countOfMax >= 2 && countOfMin >= 2) && countOfRestart >= 4) {
-        if (value === -20 || value === 20) {
+        if (value === 0) {
+            easterEgg.innerHTML = "I will destroy you!";
+        }
+        else if (value === -20 || value === 20) {
             easterEgg.innerHTML = "Stop dude, this game never is over";
         }
         else if (value === -40 || value === 40) {

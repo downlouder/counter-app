@@ -32,11 +32,11 @@ function feedback(value) {
     //General
     if (isCompleted) {
         if (value === 0) {
+            easterEgg.innerHTML = "This game is completed, now I have to leave you";
             setTimeout(() => {
-                easterEgg.innerHTML = "This game is completed, now I have to leave you";
+                easterEgg.innerHTML = "ㅤ";
             }, 7000);
         }
-        easterEgg.innerHTML = "ㅤ"
     }
     else if (value === 0 && countOfRestart === 0) {
         easterEgg.innerHTML = "Hi! I'm a counter app"; 
@@ -69,8 +69,6 @@ function feedback(value) {
             easterEgg.innerHTML = "My Congratulations you have completed this game completely. <br> Did you like this game?";
         }
     }
-    //Above code work correct
-
     //Third Round
     else if (countOfMax === 2) {
         if (value > 0) {
@@ -120,7 +118,7 @@ function feedback(value) {
             easterEgg.innerHTML = "Stop pressing me";
         }
         else if (value === 50 || value === -50) {
-            easterEgg.innerHTML = "When I start angry it's better to obey me";
+            easterEgg.innerHTML = "You cannot win me";
         }
         else if (value === 65 || value === -65) {
             easterEgg.innerHTML = "I have many surprises for you";
@@ -182,9 +180,6 @@ function feedback(value) {
         else if (value === -100 && countOfMin === 0) {
             easterEgg.innerHTML = "You are so negative";
         }
-    }
-    else if ((countOfRestart >= 3 && value === 0) && !isCompleted) {
-        easterEgg.innerHTML = "You cannot win me";
     }
     else if (value === 0) {
         easterEgg.innerHTML = "ㅤ"

@@ -11,7 +11,6 @@ let addonColorValue = 56;
 let countOfRestart = 0;
 let countOfMin = 0;
 let countOfMax = 0;
-let newValue = value;
 let isCompleted = false;
 let countOfIgn = 0;
 
@@ -70,44 +69,33 @@ function feedback(value) {
         }
     }
     //Third Round
-    else if (countOfMax === 2) {
-        if (value > 0) {
-            countOfIgn++;
-            reset.click();
-            if (countOfIgn > 0) {
-                easterEgg.innerHTML = "No dude, you cannot increase";
-            }
-        }
-        else if (value === 0) {
-            easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
-        }
-        else if (value === -5) {
-            easterEgg.innerHTML = "Obedient boy";
-        }
-        else if (value === -99) {
-            countOfIgn = 0;
+    else if (value > 0 && countOfMax === 2) {
+        countOfIgn++;
+        reset.click();
+        if (countOfIgn > 0) {
+            easterEgg.innerHTML = "No dude, you cannot increase";
         }
     }
-    else if (countOfMin === 2) {
-        if (value < 0) {
-            countOfIgn++;
-            reset.click();
-            if (countOfIgn > 0) {
-                easterEgg.innerHTML = "No dude, you cannot decrease";
-            }
-        }
-        else if (value === 0) {
-            easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
-        }
-        else if (value === 5) {
-            easterEgg.innerHTML = "Obedient boy";
-        }
-        else if (value === 99) {
-            countOfIgn = 0;
+    else if (value === 0 && countOfMax === 2) {
+        easterEgg.innerHTML = "Good dog.<br>I think you will be good bondsman<br>Now you can only decrease";
+    }
+    else if (value === -5 && countOfMax === 2) {
+        easterEgg.innerHTML = "Obedient boy";
+        countOfIgn = 0;
+    }
+    else if (value < 0 && countOfMin === 2) {
+        countOfIgn++;
+        reset.click();
+        if (countOfIgn > 0) {
+            easterEgg.innerHTML = "No dude, you cannot decrease";
         }
     }
     else if (value === 0 && countOfMin === 2) {
         easterEgg.innerHTML = "Now you can only increase";
+    }
+    else if (value === 5 && countOfMin === 2) {
+        easterEgg.innerHTML = "Obedient boy";
+        countOfIgn = 0;
     }
     //Second Round
     else if (countOfMax === 1 || countOfMin === 1) {

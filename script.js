@@ -14,7 +14,7 @@ let countOfMin = 0;
 let countOfMax = 0;
 let isCompleted = false;
 let countOfIgn = 0;
-let allClicks = 0;
+let allClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -100,32 +100,49 @@ function feedback(value) {
         countOfIgn = 0;
     }
     //Second Round
-    else if (countOfMax === 1 || countOfMin === 1) {
+    else if (countOfMax === 1) {
         if (value === 0) {   
             easterEgg.innerHTML = "Just give up!";
         }
-        else if (value === 25 || value === -25) {
+        else if (value === 25) {
             easterEgg.innerHTML = "Stop pressing me";
         }
-        else if (value === 50 || value === -50) {
+        else if (value === 50) {
             easterEgg.innerHTML = "You cannot win me";
         }
-        else if (value === 65 || value === -65) {
+        else if (value === 65) {
             easterEgg.innerHTML = "I have many surprises for you";
         }
-        else if (value === 80 || value === -80) {
+        else if (value === 80) {
             easterEgg.innerHTML = "When I start angry it's better to obey me";
         }
-        else if (countOfMax === 1 && value === 90) {
+        else if (value === 90) {
             easterEgg.innerHTML = "You are very kind, but such people are not appreciated";
         }
-        else if (countOfMin === 1 && value === -90) {
-            easterEgg.innerHTML = "Try to be more positive";
-        }
-        else if (value === 100 && countOfMax === 1) {
+        else if (value === 100) {
             easterEgg.innerHTML = "Now we will play for my rules ;) <br> Press reset button)";
         }
-        else if (value === -100 && countOfMin === 1) {
+    }
+    else if (countOfMin === 1) {
+        if (value === 0) {   
+            easterEgg.innerHTML = "Just give up!";
+        }
+        else if (value === -25) {
+            easterEgg.innerHTML = "Stop pressing me";
+        }
+        else if (value === -50) {
+            easterEgg.innerHTML = "You cannot win me";
+        }
+        else if (value === -65) {
+            easterEgg.innerHTML = "I have many surprises for you";
+        }
+        else if (value === -80) {
+            easterEgg.innerHTML = "When I start angry it's better to obey me";
+        }
+        else if (value === -90) {
+            easterEgg.innerHTML = "Try to be more positive";
+        }
+        else if (value === -100) {
             easterEgg.innerHTML = "I know how I can make you more positive";
         }
     }
@@ -161,7 +178,7 @@ function feedback(value) {
         else if (value === 80 || value === -80) {
             easterEgg.innerHTML = "Dude common, just give up!";
         }
-        else if (value === 90 || value === -90) {
+        else if (value === 90 && countOfMax === 0) {
             easterEgg.innerHTML = "Okay man, I got you)";
         }
         else if (value === 100 && countOfMax === 0) {
@@ -180,12 +197,9 @@ function app() {
     counter.innerHTML = value;
     label.style.color = `hsl(${colorValue}, 100%, 85%)`;
     counter.style.color = `hsl(${colorValue}, 100%, 55%)`;
-    let currentClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
     feedback(value);
     increment.addEventListener('click', () => {
         value++;
-        newClicks = currentClicks + 1;
-        localStorage.setItem('clicks', newClicks);
         allClicks++;
         ++addonColorValue;
         if (addonColorValue % 2 === 0) {
@@ -199,8 +213,6 @@ function app() {
     });
     decrement.addEventListener('click', () => {
         value--;
-        newClicks = currentClicks + 1;
-        localStorage.setItem('clicks', newClicks);
         allClicks++;
         --addonColorValue;
         if (addonColorValue % 2 === 0) {
@@ -233,12 +245,9 @@ function app() {
         feedback(value);
     });
     statistics.addEventListener('click', () => {
-        console.log('its work');
-        // let currentClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
-        let newClicks = currentClicks + 1;
 		localStorage.setItem('clicks', allClicks);
         console.log(localStorage.getItem('clicks'));
-        // localStorage.clear();
+        // localStorage.clear('clicks');
     })
 }
 

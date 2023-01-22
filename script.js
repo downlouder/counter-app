@@ -5,6 +5,7 @@ const increment = document.getElementById('increment');
 const label = document.getElementById('label');
 const buttons = document.querySelectorAll('.btn');
 const easterEgg = document.getElementById('easterEgg');
+const statistics = document.getElementById('statistics');
 let value = 0;
 let colorValue = 56;
 let addonColorValue = 56;
@@ -13,6 +14,7 @@ let countOfMin = 0;
 let countOfMax = 0;
 let isCompleted = false;
 let countOfIgn = 0;
+let allClicks = 0;
 
 function settingsBtn(value) {
     if (value >= 100 || value <= -100) {
@@ -178,9 +180,13 @@ function app() {
     counter.innerHTML = value;
     label.style.color = `hsl(${colorValue}, 100%, 85%)`;
     counter.style.color = `hsl(${colorValue}, 100%, 55%)`;
+    let currentClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
     feedback(value);
     increment.addEventListener('click', () => {
         value++;
+        newClicks = currentClicks + 1;
+        localStorage.setItem('clicks', newClicks);
+        allClicks++;
         ++addonColorValue;
         if (addonColorValue % 2 === 0) {
             colorValue++;
@@ -193,6 +199,9 @@ function app() {
     });
     decrement.addEventListener('click', () => {
         value--;
+        newClicks = currentClicks + 1;
+        localStorage.setItem('clicks', newClicks);
+        allClicks++;
         --addonColorValue;
         if (addonColorValue % 2 === 0) {
             colorValue--;
@@ -223,6 +232,14 @@ function app() {
         settingsBtn(value);
         feedback(value);
     });
+    statistics.addEventListener('click', () => {
+        console.log('its work');
+        // let currentClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
+        let newClicks = currentClicks + 1;
+		localStorage.setItem('clicks', allClicks);
+        console.log(localStorage.getItem('clicks'));
+        // localStorage.clear();
+    })
 }
 
 app();

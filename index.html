@@ -11,7 +11,10 @@
 <body>
     <main id="main">
         <div id="statistics">
-            <img id="history" src="images/historyBlack.png" alt="History">
+            <picture>
+                <source class=".history" media="(max-width: 550px)" srcset="images/historyWhite.png">
+                <img class=".history" src="images/historyBlack.png" alt="History">
+            </picture>
         </div>
         <div id="counterApp">
             <h1 id="label">Counter App</h1>

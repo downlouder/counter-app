@@ -30,12 +30,20 @@ body {
 
 #statistics {
     position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8%;
     top: 10px;
     right: 10px;
+    width: 300px;
     height: 75px;
 }
-#history {
+picture > source, picture > img {
     height: 75px;
+}
+p {
+    color: #202020;
 }
 
 #counterApp {
@@ -128,10 +136,13 @@ a:active {
     #main {
         gap: 4rem;
     }
+    #history {
+        color: #f1f1f1;
+    }
     #buttons {
         flex-direction: column-reverse;
     }
-    footer, a, #easterEgg {
+    footer, a, #easterEgg, p {
         color: #f1f1f1;
     }
 }

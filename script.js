@@ -6,14 +6,16 @@ const label = document.getElementById('label');
 const buttons = document.querySelectorAll('.btn');
 const easterEgg = document.getElementById('easterEgg');
 const statistics = document.getElementById('statistics');
+const info = document.createElement('p');
 let value = 0;
 let colorValue = 56;
 let addonColorValue = 56;
 let countOfRestart = 0;
 let countOfMin = 0;
 let countOfMax = 0;
-let isCompleted = false;
 let countOfIgn = 0;
+let isCompleted = false;
+let isShownP = false;
 let allClicks = localStorage.getItem('clicks')?parseInt(localStorage.getItem('clicks')):0;
 
 function settingsBtn(value) {
@@ -197,6 +199,7 @@ function app() {
     counter.innerHTML = value;
     label.style.color = `hsl(${colorValue}, 100%, 85%)`;
     counter.style.color = `hsl(${colorValue}, 100%, 55%)`;
+    statistics.append(info);
     feedback(value);
     increment.addEventListener('click', () => {
         value++;
@@ -245,10 +248,12 @@ function app() {
         feedback(value);
     });
     statistics.addEventListener('click', () => {
+        info.hidden = isShownP;
+        isShownP = !isShownP;
 		localStorage.setItem('clicks', allClicks);
+        info.textContent = `Total clicks: ${localStorage.getItem('clicks')}`;
         console.log(localStorage.getItem('clicks'));
-        // localStorage.clear('clicks');
-    })
+    });
 }
 
 app();

@@ -251,6 +251,7 @@ function app() {
     });
     statistics.addEventListener('click', () => {
         info.hidden = !info.hidden;
+        info.textContent = `Total clicks: ${localStorage.getItem('clicks')}`;
     });
     function totalClicks() {
         localStorage.setItem('clicks', allClicks);

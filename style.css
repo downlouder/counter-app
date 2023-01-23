@@ -42,8 +42,9 @@ body {
 picture > source, picture > img {
     height: 75px;
 }
-p {
+div#statistics p {
     color: #202020;
+    font-size: 1.2rem;
 }
 
 #counterApp {
@@ -142,7 +143,7 @@ a:active {
     #buttons {
         flex-direction: column-reverse;
     }
-    footer, a, #easterEgg, p {
+    footer, a, #easterEgg, div#statistics p {
         color: #f1f1f1;
     }
 }
